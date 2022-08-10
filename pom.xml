@@ -47,7 +47,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <mainClass>com.example.Application</mainClass>
+                    <mainClass>com.example.JenkinsApplication</mainClass>
                     <executable>true</executable>
                     <additionalProperties>
                         <java.source>${maven.compiler.source}</java.source>
