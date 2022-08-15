@@ -9,7 +9,7 @@ pipeline {
                 }
             } 
         }
-        stage('Test') {
+        stage('Test stage') {
             steps {
                 script {
                     echo 'Test'
@@ -40,7 +40,7 @@ pipeline {
                 }
             }            
         }
-        stage('Run local'){
+        stage('Run local stage'){
             steps {
                 script {
                     sh 'docker run -d -p 8090:8086 example/example-app'

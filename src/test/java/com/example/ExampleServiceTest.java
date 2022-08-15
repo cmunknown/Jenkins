@@ -11,6 +11,6 @@ public class ExampleServiceTest {
     @Test
     public void selfNameTest() {
         String name = exampleService.getSelfName();
-        Assert.assertEquals("ExuampleService", name);
+        Assert.assertEquals("ExampleService", name);
     }
 }
