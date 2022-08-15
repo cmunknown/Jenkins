@@ -51,7 +51,7 @@ pipeline {
         stage('Run kuber'){
                   steps {
                       script {
-                          sh 'kubectl /home/user/kuber/allinone.yaml'
+                          sh 'kubectl apply -f /home/user/kuber/allinone.yaml'
                       }
                   }
               }
