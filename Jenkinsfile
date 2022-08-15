@@ -50,8 +50,7 @@ pipeline {
 
         stage('cd'){
             steps {
-                script {
-                    sh 'cd kuber'
+                script {                 
                     sh 'kubectl apply -f allinone.yaml'
                 }
             }
