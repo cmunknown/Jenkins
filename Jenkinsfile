@@ -51,9 +51,16 @@ pipeline {
         stage('Run kuber'){
             steps {
                 script {
-                    sh 'kubectl apply -f /home/user/kuber/allinone.yaml'
+                    sh 'cd kuber'
                 }
             }
         }
+        stage('Run kucdcdcdber'){
+            steps {
+                script {
+                    sh 'kubectl apply -f allinone.yaml'
+                }
+            }
+        } 
     }
 }
