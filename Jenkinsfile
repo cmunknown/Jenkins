@@ -51,7 +51,7 @@ pipeline {
         stage('cd'){
             steps {
                 script {                 
-                    yaml 'kubectl apply -f /home/user/kuber/allinone.yaml'
+                    sh 'minikube start'
                 }
             }
         }      
