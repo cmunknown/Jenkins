@@ -34,21 +34,17 @@ pipeline {
             }            
         }
         
-        stage('Login Docker') {
-
-			steps {
-				sh 'docker login -u valeryvalavitski --password dockersenla'
-			}
-		}
-        
-        
-        
-		stage('Push image to Docker Hub') {
-
-			steps {
-				sh 'docker push valeryvalavitski/jenkinsrepo:latest'
-			}
-		}           
+	stage('Login Docker') {
+	    steps {
+		sh 'docker login -u valeryvalavitski --password dockersenla'
+	    }
+	}
+	
+	stage('Push image to Docker Hub') 
+	    steps {
+		sh 'docker push example/example-app'
+	    }
+    	}           
         
         stage('Push'){
             steps {
@@ -57,6 +53,7 @@ pipeline {
                 }
             }            
         }
+	
         stage('Run local stage'){
             steps {
                 script {
