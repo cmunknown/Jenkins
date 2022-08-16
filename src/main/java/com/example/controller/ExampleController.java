@@ -15,6 +15,6 @@ public class ExampleController {
     
     @GetMapping
     public String getServiceName() {
-        return exampleService.getSelfName() + " hello from IDEAdddsd";
+        return exampleService.getSelfName() + " hello from new version";
     }
 }
