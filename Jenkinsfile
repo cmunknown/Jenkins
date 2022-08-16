@@ -33,14 +33,13 @@ pipeline {
                 }
             }
         }
-    }
-
-    
-    stage('Build Docker image') {
-        steps {
-            script {
-                sh 'docker build -t example/example-app .'
-                echo 'Build Docker image'
+        
+        stage('Build Docker image') {
+            steps {
+                script {
+                    sh 'docker build -t example/example-app .'
+                    echo 'Build Docker image'
+                }
             }
         }
     }
