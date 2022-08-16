@@ -51,7 +51,7 @@ pipeline {
         stage('cd'){
             steps {
                 script {                 
-                    sh 'minikube start'
+                    sh 'minikube stop'
                 }
             }
         }      
