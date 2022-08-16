@@ -5,32 +5,36 @@ pipeline {
         dockerhub=credentials('dockerhub')
     } 
     
-    stage('Build') {
-        steps {
-            script {
-                echo 'Build'
-                sh 'mvn compile'
+    stages {
+        
+        stage('Build') {
+            steps {
+                script {
+                    echo 'Build'
+                    sh 'mvn compile'
+                }
+            }
+        }
+        
+        stage('Test stage') {
+            steps {
+                script {
+                    echo 'Test'
+                    sh 'mvn test'
+                }
+            }
+        }
+        
+        stage('Package') {
+            steps {
+                script {
+                    sh 'mvn package -Dmaven.test.skip'
+                    echo 'Package'
+                }
             }
         }
     }
-    
-    stage('Test stage') {
-        steps {
-            script {
-                echo 'Test'
-                sh 'mvn test'
-            }
-        }
-    }
-    
-    stage('Package') {
-        steps {
-            script {
-                sh 'mvn package -Dmaven.test.skip'
-                echo 'Package'
-            }
-        }
-    }
+}
     
 //     stage('Build Docker image') {
 //         steps {
