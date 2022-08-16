@@ -3,17 +3,17 @@ pipeline {
     
     environment {
         dockerhub=credentials('dockerhub')
-    }    
+    }  
     
-    stages {
-        stage('Build') {
-            steps {
+    stage('Build') {
+        steps {
                 script {
                     echo 'Build'
                     sh 'mvn compile'
                 }
             }
         }
+        
         stage('Test stage') {
             steps {
                 script {
@@ -30,6 +30,7 @@ pipeline {
                 }
             }
         }
+        
         stage('Build Docker image') {
             steps {
                 script {
@@ -42,44 +43,10 @@ pipeline {
         stage('Deploy Docker Image') {
             steps {
                 script {              
-                    sh 'echo $dockerhub_PSW | docker login -u $dockerhub_USR --password-stdin'
-                 }  
-                 sh 'docker push example/example-app'
-                }
+                  sh 'echo $dockerhub_PSW | docker login -u $dockerhub_USR --password-stdin'
+                }  
+                sh 'docker push example/example-app'
             }
         }
-        
-//         stage('Login Docker') {
-//             steps {
-//               script{
-                  
-                  
-//                   sh 'docker login --username valeryvalavitski --password dockersenla'
-// //                   sh 'docker login -u valeryvalavitski --password dockersenla'
-//             }
-//         }
-
-//         stage('Push image to Docker Hub')
-//            steps {
-//               script {
-//                  sh 'docker push example/example-app'
-//           }
-//         }
-
-//         stage('Push'){
-//             steps {
-//                script {
-//                echo 'Push'
-//                 }
-//             }
-//         }
-
-//         stage('Run local stage'){
-//             steps {
-//                 script {
-//                     sh 'docker run -d -p 8092:8086 example/example-app'
-//                 }
-//             }
-//         }
     }
-}
+}  
