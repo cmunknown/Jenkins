@@ -48,5 +48,5 @@ pipeline {
                 sh 'docker push example/example-app'
             }
         }
-    }
+    
 }  
