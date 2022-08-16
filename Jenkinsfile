@@ -54,7 +54,7 @@ pipeline {
         stage('Deploy Docker PUSH') {
             steps {
                 script { 
-                    sh 'docker tag 123 valeryvalavitski/jenkinsrepo'
+                    sh 'docker tag app:latest valeryvalavitski/jenkinsrepoasd'
                     sh 'docker push valeryvalavitski/jenkinsrepo'
                 }
             }
