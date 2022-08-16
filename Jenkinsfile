@@ -37,7 +37,7 @@ pipeline {
         stage('Build Docker image') {
             steps {
                 script {
-                    sh 'docker build -t app:latest .'
+                    sh 'docker build -t app:v1 .'
                     echo 'Build Docker image'
                 }
             }
