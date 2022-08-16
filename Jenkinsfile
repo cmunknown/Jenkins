@@ -37,7 +37,7 @@ pipeline {
         stage('Build Docker image') {
             steps {
                 script {
-                    sh 'docker build -t app .'
+                    sh 'docker build -t app:v1 .'
                     echo 'Build Docker image'
                 }
             }
@@ -54,8 +54,8 @@ pipeline {
         stage('Deploy Docker PUSH') {
             steps {
                 script { 
-                    sh 'docker tag v1 valeryvalavitski/luululul'
-                    sh 'docker push valeryvalavitski/luululul'
+                    sh 'docker tag app:v1 valeryvalavitski/casaccaac'
+                    sh 'docker push valeryvalavitski/casaccaac'
                 }
             }
         }    
