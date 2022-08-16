@@ -42,16 +42,16 @@ pipeline {
                 }
             }
         }
+        
+        stage('Deploy Docker Login') {
+            steps {
+                script {        
+                    sh 'echo $dockerhub_PSW | docker login -u $dockerhub_USR --password-stdin'
+                }
+            }
+        }
     }
 }
-    
-//     stage('Deploy Docker Login') {
-//         steps {
-//             script {        
-//                 sh 'echo $dockerhub_PSW | docker login -u $dockerhub_USR --password-stdin'
-//             }
-//         }
-//     }
     
 //     stage('Deploy Docker PUSH') {
 //         steps {
