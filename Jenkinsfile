@@ -1,9 +1,9 @@
 pipeline {
     agent any
     
-//     environment {
-//         dockerhub=credentials('dockerhub')
-//     } 
+    environment {
+        dockerhub=credentials('dockerhub')
+    } 
     
     stages {
         
@@ -34,16 +34,16 @@ pipeline {
             }
         }
     }
-}
+
     
-//     stage('Build Docker image') {
-//         steps {
-//             script {
-//                 sh 'docker build -t example/example-app .'
-//                 echo 'Build Docker image'
-//             }
-//         }
-//     }
+    stage('Build Docker image') {
+        steps {
+            script {
+                sh 'docker build -t example/example-app .'
+                echo 'Build Docker image'
+            }
+        }
+    }
     
 //     stage('Deploy Docker Login') {
 //         steps {
@@ -61,3 +61,4 @@ pipeline {
 //         }
 //     }    
 
+}
