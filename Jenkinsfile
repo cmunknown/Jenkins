@@ -49,15 +49,15 @@ pipeline {
                     sh 'echo $dockerhub_PSW | docker login -u $dockerhub_USR --password-stdin'
                 }
             }
-        }
+        }   
+        
+        stage('Deploy Docker PUSH') {
+            steps {
+                script { 
+                    sh 'sh 'docker push example/example-app''
+                }
+            }
+        }    
     }
 }
-    
-//     stage('Deploy Docker PUSH') {
-//         steps {
-//             script { 
-//                 sh 'sh 'docker push example/example-app''
-//             }
-//         }
-//     }    
 
