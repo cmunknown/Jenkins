@@ -44,6 +44,7 @@ pipeline {
             }
         }
     }
+}
     
 //     stage('Deploy Docker Login') {
 //         steps {
@@ -61,4 +62,3 @@ pipeline {
 //         }
 //     }    
 
-}
