@@ -51,7 +51,7 @@ pipeline {
         stage('cd'){
             steps {
                 script {                 
-                    sh 'minikube stop'
+                    sh 'kubectl apply -f allinone.yaml'
                 }
             }
         }      
