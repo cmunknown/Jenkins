@@ -37,7 +37,7 @@ pipeline {
         stage('Build Docker image') {
             steps {
                 script {
-                    sh 'docker build -t example/example-app:latest .'
+                    sh 'docker build -t APP:latest .'
                     echo 'Build Docker image'
                 }
             }
@@ -54,7 +54,7 @@ pipeline {
         stage('Deploy Docker PUSH') {
             steps {
                 script { 
-                    sh 'docker push example/example-app:latest'
+                    sh 'docker push APP:latest'
                 }
             }
         }    
