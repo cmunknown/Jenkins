@@ -55,7 +55,7 @@ pipeline {
             steps {
                 script { 
                     sh 'docker tag app:latest valeryvalavitski/luululul'
-                    sh 'docker push valeryvalavitski/jenkinsrepo'
+                    sh 'docker push valeryvalavitski/luululul'
                 }
             }
         }    
