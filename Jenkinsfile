@@ -44,7 +44,6 @@ pipeline {
             steps {
                 script {
                     sh 'docker run -d -p 8092:8086 example/example-app'
-                    sh 'docker run -d -p 8099:8086 example/example-app'    
                 }
             }            
         }
@@ -52,8 +51,7 @@ pipeline {
         stage('Run kubectl'){
             steps {
                 script {
-                    sh 'docker run -d -p 8092:8086 example/example-app'
-                    sh 'docker run -d -p 8099:8086 example/example-app'    
+                    kubernetesDeploy(configs: "allinone.yaml", kubeconfigId: "minikube")                      
                 }
             }            
         }
