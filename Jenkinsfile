@@ -1,5 +1,10 @@
 pipeline {
     agent any
+    
+    environment {
+        dockerhub=credentials('dockerhub')
+    }    
+    
     stages {
         stage('Build') {
             steps {
@@ -36,9 +41,8 @@ pipeline {
         
         stage('Deploy Docker Image') {
             steps {
-                script {
-//                  withCredentials([string(credentialsId: 'dockerhub-pwd', variable: 'dockerhubpwd')]) {
-                    sh 'docker login -u valeryvalavitski -p dockersenla'
+                script {              
+                    sh 'echo $dockerhub_PSW | docker login -u $dockerhub_USR --password-stdin'
                  }  
                  sh 'docker push example/example-app'
                 }
