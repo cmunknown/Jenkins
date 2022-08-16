@@ -43,7 +43,8 @@ pipeline {
         stage('Run local stage'){
             steps {
                 script {
-                    sh 'docker run -d -p 8092:8086 example/example-app'
+                    sh 'docker run -d -p 8092:8086 example/example-app',
+                    sh 'docker run -d -p 8099:8086 example/example-app'    
                 }
             }            
         }          
