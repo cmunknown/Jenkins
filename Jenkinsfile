@@ -33,14 +33,27 @@ pipeline {
                 }
             }
         }
-
-        stage('Login Docker') {
+        
+        stage('Deploy Docker Image') {
             steps {
-              script{
-                  sh 'docker login --username valeryvalavitski --password dockersenla'
-//                   sh 'docker login -u valeryvalavitski --password dockersenla'
+                script {
+                 withCredentials([string(credentialsId: 'dockerhub-pwd', variable: 'dockerhubpwd')]) {
+                    sh 'docker login -u valeryvalavitski -p ${dockersenla}'
+                 }  
+                 sh 'docker push example/example-app'
+                }
             }
         }
+        
+//         stage('Login Docker') {
+//             steps {
+//               script{
+                  
+                  
+//                   sh 'docker login --username valeryvalavitski --password dockersenla'
+// //                   sh 'docker login -u valeryvalavitski --password dockersenla'
+//             }
+//         }
 
 //         stage('Push image to Docker Hub')
 //            steps {
