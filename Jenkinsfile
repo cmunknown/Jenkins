@@ -3,21 +3,11 @@ pipeline {
     
     environment {
         dockerhub=credentials('dockerhub')
-        githubprivaterepositorypass=credentials('githubprivaterepositorypass')
-        tagVersion='hjghjghj789'
-        
+        tagVersion='hjghjghj789'        
     } 
     
-    stages {
-        
-        stage('GitHub Login') {
-            steps {
-                script {        
-                    sh 'echo $githubprivaterepositorypass_PSW | docker login -u $githubprivaterepositorypass_USR --password-stdin'
-                }
-            }
-        }
-        
+    stages {        
+         
         stage('Build') {
             steps {
                 script {
@@ -52,31 +42,31 @@ pipeline {
                     echo 'Build Docker image'
                 }
             }
-        }
+        }      
+              
+        stage('Deploy Docker Login') {
+            steps {
+                script {        
+                    sh 'echo $dockerhub_PSW | docker login -u $dockerhub_USR --password-stdin'
+                }
+            }
+        }   
+        
+        stage('Deploy Docker PUSH') {
+            steps {
+                script { 
+                    sh 'docker tag app valeryvalavitski/app:${tagVersion}'
+                    sh 'docker push valeryvalavitski/app:${tagVersion}'
+                }      
+            }
+        } 
         
         stage('Run local'){
             steps {
                 script {
                     sh 'docker run -d -p 8086:8086 app'
                 }
-            }            
+            }             
         }
-        
-//         stage('Deploy Docker Login') {
-//             steps {
-//                 script {        
-//                     sh 'echo $dockerhub_PSW | docker login -u $dockerhub_USR --password-stdin'
-//                 }
-//             }
-//         }   
-        
-//         stage('Deploy Docker PUSH') {
-//             steps {
-//                 script { 
-//                     sh 'docker tag app valeryvalavitski/app:${tagVersion}'
-//                     sh 'docker push valeryvalavitski/app:${tagVersion}'
-//                 }      
-//             }
-//         }    
     }
 }
