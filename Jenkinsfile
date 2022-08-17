@@ -3,11 +3,20 @@ pipeline {
     
     environment {
         dockerhub=credentials('dockerhub')
+        githubprivaterepositorypass=credentials('githubprivaterepositorypass')
         tagVersion='hjghjghj789'
         
     } 
     
     stages {
+        
+        stage('GitHub Login') {
+            steps {
+                script {        
+                    sh 'echo $githubprivaterepositorypass_PSW | docker login -u $githubprivaterepositorypass_USR --password-stdin'
+                }
+            }
+        }
         
         stage('Build') {
             steps {
