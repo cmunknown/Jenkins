@@ -5,9 +5,9 @@ pipeline {
     stages {  
         stage('kuber') {
             steps {
-                script {
-                    echo 'kuber'
-                    sh 'minikube stop'
+                script {            
+              
+                    sh 'kubectl apply -f /home/user/kuber/allinone.yaml'
                 }
             }
         }
