@@ -54,9 +54,9 @@ pipeline {
         stage('Deploy Docker PUSH') {
             steps {
                 script { 
-                    sh 'docker tag app:latest v2'
-                    sh 'docker push v2'
-                }
+                    sh 'docker tag app:latest valeryvalavitski/app:latest:v2'
+                    sh 'docker push valeryvalavitski/app:latest:v2'
+                }      
             }
         }    
     }
