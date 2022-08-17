@@ -3,6 +3,8 @@ pipeline {
     
     environment {
         dockerhub=credentials('dockerhub')
+        tagVersion='h789'
+        
     } 
     
     stages {
@@ -54,8 +56,8 @@ pipeline {
         stage('Deploy Docker PUSH') {
             steps {
                 script { 
-                    sh 'docker tag app valeryvalavitski/app:v900'
-                    sh 'docker push valeryvalavitski/app:v900'
+                    sh 'docker tag app valeryvalavitski/app:${tagVersion}'
+                    sh 'docker push valeryvalavitski/app:${tagVersion}'
                 }      
             }
         }    
