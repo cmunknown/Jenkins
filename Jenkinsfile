@@ -7,7 +7,7 @@ pipeline {
             steps {
                 script {
                     echo 'kuber'
-                    sh 'minikube start'
+                    sh 'minikube stop'
                 }
             }
         }
