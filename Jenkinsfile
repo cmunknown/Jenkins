@@ -45,21 +45,29 @@ pipeline {
             }
         }
         
-        stage('Deploy Docker Login') {
+        stage('Run local'){
             steps {
-                script {        
-                    sh 'echo $dockerhub_PSW | docker login -u $dockerhub_USR --password-stdin'
+                script {
+                    sh 'docker run -d -p 8086:8086 app'
                 }
-            }
-        }   
+            }            
+        }
         
-        stage('Deploy Docker PUSH') {
-            steps {
-                script { 
-                    sh 'docker tag app valeryvalavitski/app:${tagVersion}'
-                    sh 'docker push valeryvalavitski/app:${tagVersion}'
-                }      
-            }
-        }    
+//         stage('Deploy Docker Login') {
+//             steps {
+//                 script {        
+//                     sh 'echo $dockerhub_PSW | docker login -u $dockerhub_USR --password-stdin'
+//                 }
+//             }
+//         }   
+        
+//         stage('Deploy Docker PUSH') {
+//             steps {
+//                 script { 
+//                     sh 'docker tag app valeryvalavitski/app:${tagVersion}'
+//                     sh 'docker push valeryvalavitski/app:${tagVersion}'
+//                 }      
+//             }
+//         }    
     }
 }
