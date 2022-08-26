@@ -3,13 +3,21 @@ pipeline {
     
     
     stages {  
-        stage('kuber') {
+         stage('Build') {
             steps {
-                script {            
-              
-                    sh 'kubectl apply -f /home/user/kuber/allinone.yaml'
+                script {
+                    echo 'Build'
+                    bat 'mvn compile'
                 }
-            }
+            } 
+        }
+        stage('Test') {
+            steps {
+                script {
+                    echo 'Test'
+                    bat 'mvn test'
+                }
+            }            
         }
     }
 }
